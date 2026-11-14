@@ -1,0 +1,41 @@
+name: Atualizar dados do Radar Taubaté
+
+on:
+  schedule:
+    # Roda todo dia às 04:15 da manhã (horário de Brasília / 07:15 UTC)
+    - cron: '15 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Coletar dados oficiais da Câmara e validar integridade
+        run: |
+          # Se a coleta vier incompleta ou a Câmara estiver fora do ar,
+          # coletar.py falha antes de sobrescrever dados.js e o passo para aqui.
+          python3 coletar.py
+
+      - name: Publicar atualização se houver mudanças
+        run: |
+          git config user.name "Radar Taubaté"
+          git config user.email "noreply@radartaubate.github.io"
+          if git diff --quiet dados.js; then
+            echo "Sem alterações em dados.js."
+          else
+            git add dados.js
+            git commit -m "chore: atualizar dados da Câmara ($(date -u +'%Y-%m-%d'))"
+            git push
+          fi
