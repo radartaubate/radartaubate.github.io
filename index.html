@@ -239,6 +239,39 @@ body:not(.modo-simples) .btn-ficha{display:none}
 body.modo-simples .stats{display:none}
 body.modo-simples #pref-alin-panel:not(.open) .alin-grid{display:none}
 body:not(.modo-simples) #btn-alin-toggle{display:none}
+.mode-sw{display:inline-flex;flex-wrap:wrap;background:var(--soft);border:2px solid var(--ink);border-radius:18px;padding:4px;gap:4px}
+body.modo-guia section:not(#sec-guia),body.modo-guia .meter,body.modo-guia #manchetes-topo,body.modo-guia #stats,body.modo-guia #upd{display:none!important}
+body:not(.modo-guia) #guia-back-top{display:none}
+.guia-hero{background:linear-gradient(135deg,#0f1720 0%,#1e293b 100%);color:#fff;border-radius:24px;padding:26px 28px;margin:0 0 22px;box-shadow:var(--shadow)}
+.guia-hero .gk{color:#fbbf24;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:6px}
+.guia-hero h2{font-family:var(--display);font-size:clamp(26px,4.5vw,38px);line-height:1.08;margin:0 0 10px;color:#fff}
+.guia-hero p{font-size:16px;color:#cbd5e1;margin:0;max-width:68ch;line-height:1.45}
+.guia-sub{font-family:var(--display);font-size:23px;font-weight:800;margin:28px 0 12px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.guia-grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.guia-card{background:var(--paper);border:1.5px solid var(--hair);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}
+.guia-card .gc-ic{font-size:26px;line-height:1}
+.guia-card h3{font-family:var(--display);font-size:18.5px;margin:2px 0 0;line-height:1.2}
+.guia-card p{font-size:14.5px;color:var(--mute);margin:0;line-height:1.45}
+.guia-card b{color:var(--ink)}
+.guia-myths{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:12px}
+.guia-myth{border-radius:16px;padding:16px 18px;border:1.5px solid #fecaca;background:#fef2f2}
+.guia-myth.ok{border-color:#bbf7d0;background:#f0fdf4}
+.guia-myth h4{font-family:var(--display);font-size:16.5px;margin:0 0 6px;color:#991b1b}
+.guia-myth.ok h4{color:#166534}
+.guia-myth p{font-size:14px;margin:0;color:var(--ink);line-height:1.45}
+.guia-cob-box{background:var(--paper);border:2px solid var(--ink);border-radius:22px;padding:22px 24px;margin-top:14px;box-shadow:0 5px 0 var(--ink)}
+.guia-cob-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0}
+.guia-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}
+.guia-step{background:var(--soft);border-radius:16px;padding:16px 18px;border-left:4px solid var(--b)}
+.guia-step h4{font-family:var(--display);font-size:16.5px;margin:0 0 5px}
+.guia-step p{font-size:14px;color:var(--mute);margin:0;line-height:1.45}
+.guia-part-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:12px}
+.guia-part{background:var(--paper);border:1.5px solid var(--hair);border-radius:18px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.guia-part .gp-tag{align-self:flex-start;background:var(--b-t);color:var(--b);font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:3px 9px;border-radius:999px}
+.guia-part h4{font-family:var(--display);font-size:18px;margin:0;line-height:1.2}
+.guia-part p{font-size:14px;color:var(--mute);margin:0;line-height:1.45;flex:1}
+.guia-part a{font-size:13.5px;font-weight:700;color:var(--b);text-decoration:none}
+.guia-part a:hover{text-decoration:underline}
 .qsort{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
 .qpill{border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700}
 .qpill.on{background:var(--ink);color:#fff}
@@ -348,6 +381,7 @@ footer p{margin:0 0 6px;max-width:70ch}
       <div class="mode-sw" role="group" aria-label="Modo de exibição">
         <button class="mbtn on" type="button" id="m-simples">⚡ Leitura Rápida (Manchetes)</button>
         <button class="mbtn" type="button" id="m-completo">📊 Versão Completa (Todos os números)</button>
+        <button class="mbtn" type="button" id="m-guia">🎓 Para que serve um vereador? (Como cobrar)</button>
       </div>
     </div>
     <h1><img src="logo.png" alt="Radar Taubaté" width="1000" height="380"></h1>
@@ -496,6 +530,133 @@ footer p{margin:0 0 6px;max-width:70ch}
     </div>
   </section>
 
+  <section id="sec-guia" aria-labelledby="h-guia">
+    <div id="guia-back-top" style="margin:0 0 14px">
+      <button class="btn gh" type="button" id="btn-voltar-painel">← Voltar para os dados dos 19 vereadores e bairros</button>
+    </div>
+    <div class="guia-hero">
+      <span class="gk">Guia Cidadão · Educação Política Prática</span>
+      <h2 id="h-guia">Para que serve um vereador, como cobrar e como participar na Câmara de Taubaté</h2>
+      <p>Entenda em 2 minutos o que é obrigação real do vereador, o que é responsabilidade exclusiva do Prefeito e use o gerador abaixo para cobrar qualquer um dos 19 gabinetes pelos canais oficiais.</p>
+    </div>
+
+    <h3 class="guia-sub">1. Quais são as 4 funções reais de um vereador?</h3>
+    <div class="guia-grid4">
+      <div class="guia-card">
+        <span class="gc-ic">📜</span>
+        <h3>1. Fazer e votar Leis (Legislar)</h3>
+        <p>Criar e atualizar as regras da cidade: <b>Plano Diretor</b>, Código de Obras, zoneamento, regras do transporte público, saúde, escolas, meio ambiente e direitos do morador.</p>
+      </div>
+      <div class="guia-card">
+        <span class="gc-ic">🔍</span>
+        <h3>2. Fiscalizar o Prefeito e o dinheiro público</h3>
+        <p>Vigiar contratos, licitações, obras paradas e postos de saúde; enviar <b>Requerimentos de Informação</b> (que a Prefeitura é obrigada por lei a responder); abrir CPIs e julgar as contas do Prefeito.</p>
+      </div>
+      <div class="guia-card">
+        <span class="gc-ic">💰</span>
+        <h3>3. Votar o Orçamento e Emendas Impositivas</h3>
+        <p>Aprovar onde o dinheiro dos seus impostos será gasto a cada ano (<b>LOA/LDO</b>) e destinar as <b>Emendas Impositivas</b> (verba obrigatória do orçamento, sendo 50% para a Saúde).</p>
+      </div>
+      <div class="guia-card">
+        <span class="gc-ic">🗣️</span>
+        <h3>4. Representar os Bairros</h3>
+        <p>Ouvir moradores, realizar <b>Audiências Públicas</b> abertas e encaminhar pedidos de manutenção urbana (<i>Indicações</i>) para que a Prefeitura saiba onde estão os problemas.</p>
+      </div>
+    </div>
+
+    <h3 class="guia-sub">2. Mitos × Verdades: o que o vereador NÃO faz</h3>
+    <div class="guia-myths">
+      <div class="guia-myth">
+        <h4>❌ Mito: “O vereador asfaltou minha rua ou tapou o buraco”</h4>
+        <p><b>Vereador não executa obra.</b> Ele não tem trator, não manda na Secretaria de Obras e não compra remédio. Quem executa é exclusivamente o <b>Prefeito (Poder Executivo)</b> com o dinheiro dos impostos.</p>
+      </div>
+      <div class="guia-myth">
+        <h4>❌ Mito: “500 pedidos de bairro = 500 problemas resolvidos”</h4>
+        <p>Uma <b>Indicação</b> é apenas uma sugestão enviada à Prefeitura, sem prazo nem obrigação de atendimento. Protocolar centenas de pedidos repetidos não significa que o serviço foi feito.</p>
+      </div>
+      <div class="guia-myth ok">
+        <h4>✅ Verdade: Requerimento de Informação tem força de lei</h4>
+        <p>Diferente da simples Indicação, o <b>Requerimento de Informação</b> aprovado em plenário <b>obriga o Prefeito pela Lei Orgânica</b> a prestar contas oficialmente dentro do prazo legal.</p>
+      </div>
+      <div class="guia-myth ok">
+        <h4>✅ Verdade: Você pode ver onde foi cada Emenda Impositiva</h4>
+        <p>Todo vereador escolhe para quais obras ou entidades vai sua cota anual de emendas. Na ficha completa de cada vereador aqui no Radar Taubaté estão os links oficiais de <b>2024, 2025 e 2026</b>.</p>
+      </div>
+    </div>
+
+    <h3 class="guia-sub">3. Como cobrar um vereador na prática</h3>
+    <div class="guia-steps">
+      <div class="guia-step">
+        <h4>1º · Peça Requerimento, não só Indicação</h4>
+        <p>Se o problema na sua rua se repete há meses, peça ao vereador que protocole um <b>Requerimento de Informação</b> cobrando o cronograma oficial e o motivo da demora da Prefeitura.</p>
+      </div>
+      <div class="guia-step">
+        <h4>2º · Cobre coerência nos votos nominais</h4>
+        <p>Não olhe apenas o vídeo na rede social: confira aqui na seção <b>“Onde a Câmara rachou”</b> como o vereador votou nos projetos polêmicos e nos vetos do Prefeito.</p>
+      </div>
+      <div class="guia-step">
+        <h4>3º · Questione o equilíbrio do mandato</h4>
+        <p>Compare quantas <b>Homenagens</b> (moções de aplauso, títulos) o vereador apresentou em relação a <b>Projetos de Lei</b> reais e <b>Cobranças de fiscalização</b>.</p>
+      </div>
+    </div>
+
+    <div class="guia-cob-box">
+      <span class="eye" style="margin-bottom:4px">Ferramenta Cidadã</span>
+      <h3 style="font-family:var(--display);font-size:24px;margin:0 0 6px">✉️ Gerador de Cobrança para Vereador</h3>
+      <p class="mute" style="margin:0 0 12px;font-size:14.5px">Escolha o vereador e o motivo abaixo: o site já preenche os números reais dele e monta a mensagem pronta para enviar por e-mail, WhatsApp ou pelo protocolo oficial da Câmara.</p>
+      <div class="guia-cob-grid">
+        <label class="field" for="gc-ver">1. Escolha o vereador(a)
+          <select id="gc-ver"></select>
+        </label>
+        <label class="field" for="gc-motivo">2. O que você quer cobrar?
+          <select id="gc-motivo">
+            <option value="bairro">🏘️ Problema no meu bairro (pedir fiscalização / Requerimento)</option>
+            <option value="leis">⚖️ Mais projetos de lei e fiscalização (e menos homenagens)</option>
+            <option value="emendas">💰 Destino das Emendas Impositivas do orçamento</option>
+            <option value="voto">🗳️ Posição e voto em projeto polêmico na Câmara</option>
+            <option value="presenca">📅 Presença em plenário e prestação de contas do mandato</option>
+          </select>
+        </label>
+        <label class="field" for="gc-bairro">3. Seu bairro ou rua (opcional)
+          <input id="gc-bairro" type="text" list="bl" placeholder="Ex.: Quiririm, Gurilândia, Av. Cinderela...">
+        </label>
+      </div>
+      <label class="field" for="gc-msg">Mensagem pronta (você pode editar antes de enviar)
+        <textarea id="gc-msg" rows="5" style="font:inherit;font-size:14.5px;line-height:1.45;padding:12px 14px;border-radius:12px;border:1px solid var(--hair);background:var(--soft);width:100%;resize:vertical"></textarea>
+      </label>
+      <div class="acts" id="gc-acts" style="margin-top:12px"></div>
+      <div class="ct" id="gc-info" style="margin-top:10px;font-size:13.5px;color:var(--mute)"></div>
+    </div>
+
+    <h3 class="guia-sub">4. Como participar ativamente da Câmara de Taubaté</h3>
+    <div class="guia-part-grid">
+      <div class="guia-part">
+        <span class="gp-tag">Toda terça às 16h</span>
+        <h4>🏛️ Vá às Sessões ou assista ao vivo</h4>
+        <p>As Sessões Ordinárias acontecem <b>toda terça-feira às 16h</b> no Plenário Jaurés Guisard (<b>Av. Bandeirantes, 392 — Parque Maria Helena</b>). A entrada é livre e gratuita, com transmissão na TV Câmara (canal 4.2 aberto e YouTube).</p>
+        <a href="https://camarasempapel.camarataubate.sp.gov.br/spl/sessoes.aspx" target="_blank" rel="noopener">Ver pauta e sessões na Câmara ↗</a>
+      </div>
+      <div class="guia-part">
+        <span class="gp-tag">Voz no Plenário</span>
+        <h4>🎙️ Inscreva-se na Tribuna Livre</h4>
+        <p>Associações de bairro, sindicatos, entidades e movimentos sociais de Taubaté podem se inscrever para usar a <b>Tribuna Livre</b> durante a sessão e falar diretamente aos 19 vereadores com transmissão ao vivo.</p>
+        <a href="https://www.camarataubate.sp.gov.br/" target="_blank" rel="noopener">Portal institucional da Câmara ↗</a>
+      </div>
+      <div class="guia-part">
+        <span class="gp-tag">Orçamento e Saúde</span>
+        <h4>📢 Participe das Audiências Públicas</h4>
+        <p>Na votação do Orçamento Anual (LOA/LDO) e a cada 4 meses na prestação de contas da Saúde e Finanças, a Câmara realiza <b>Audiências Públicas</b> abertas onde qualquer morador pode pedir a palavra e fazer perguntas.</p>
+        <a href="https://www.youtube.com/@tvcamarataubate" target="_blank" rel="noopener">Acompanhar na TV Câmara Taubaté ↗</a>
+      </div>
+      <div class="guia-part">
+        <span class="gp-tag">Lei Federal 12.527</span>
+        <h4>🔎 Ouvidoria, SIC e Iniciativa Popular</h4>
+        <p>Qualquer cidadão pode protocolar pedidos oficiais de informação (<b>e-SIC / Ouvidoria</b>) sem precisar de advogado, ou propor um <b>Projeto de Lei de Iniciativa Popular</b> com apoio de 5% do eleitorado do município.</p>
+        <a href="https://www.camarataubate.sp.gov.br/" target="_blank" rel="noopener">Acessar Ouvidoria e Transparência ↗</a>
+      </div>
+    </div>
+  </section>
+
   <section aria-labelledby="h-c">
     <span class="eye">Transparência</span>
     <h2 id="h-c">De onde vêm os números</h2>
@@ -524,7 +685,7 @@ footer p{margin:0 0 6px;max-width:70ch}
   <div class="sh-body" id="sh-b"></div>
 </div>
 
-<script src="dados.js?v=20261113v4"></script>
+<script src="dados.js?v=20261116v1"></script>
 <script>
 const D=window.RX, V=D.v, IT=D.items; // item: [id,codigo,texto,aaaammdd,grupo,resultado,autores,ehMateria,tema]
 const nf=n=>Number(n).toLocaleString('pt-BR');
@@ -802,10 +963,71 @@ const fmtMil=v=>{
         </div>
       </div>`;
   }
-  const bSimp=$('m-simples'), bComp=$('m-completo');
-  if(bSimp&&bComp){
-    bSimp.onclick=()=>{document.body.classList.add('modo-simples');bSimp.classList.add('on');bComp.classList.remove('on')};
-    bComp.onclick=()=>{document.body.classList.remove('modo-simples');bComp.classList.add('on');bSimp.classList.remove('on')};
+  const bSimp=$('m-simples'), bComp=$('m-completo'), bGuia=$('m-guia'), bVoltar=$('btn-voltar-painel');
+  const setMode=m=>{
+    document.body.classList.toggle('modo-simples',m==='simples');
+    document.body.classList.toggle('modo-guia',m==='guia');
+    if(bSimp)bSimp.classList.toggle('on',m==='simples');
+    if(bComp)bComp.classList.toggle('on',m==='completo');
+    if(bGuia)bGuia.classList.toggle('on',m==='guia');
+  };
+  if(bSimp)bSimp.onclick=()=>setMode('simples');
+  if(bComp)bComp.onclick=()=>setMode('completo');
+  if(bGuia)bGuia.onclick=()=>{setMode('guia');window.scrollTo({top:0,behavior:reduce?'auto':'smooth'})};
+  if(bVoltar)bVoltar.onclick=()=>setMode('simples');
+
+  /* Gerador de Cobrança Cidadã na aba Guia */
+  const gcVer=$('gc-ver'), gcMot=$('gc-motivo'), gcBai=$('gc-bairro'), gcMsg=$('gc-msg');
+  if(gcVer&&gcMot&&gcMsg){
+    gcVer.innerHTML=V.map((v,i)=>`<option value="${i}">${esc(v.ap)} (${esc(v.part)})</option>`).join('');
+    const buildGcMsg=()=>{
+      const v=V[+gcVer.value]||V[0];
+      const m=gcMot.value;
+      const b=(gcBai&&gcBai.value.trim())||'meu bairro';
+      const totP=ORDER.reduce((s,c)=>s+(v.cat[c]||0),0);
+      const pPres=Math.round(v.P/(v.P+v.A+v.F)*100);
+      if(m==='bairro'){
+        return `Olá, Vereador(a) ${v.ap}. Sou morador(a) de Taubaté (${b}) e acompanho seu mandato pelo painel Radar Taubaté.\n\nGostaria de solicitar que seu gabinete protocole um Requerimento de Informação oficial à Prefeitura (e não apenas uma Indicação simples) cobrando o cronograma e a solução para o problema em ${b}, já que a Lei Orgânica obriga o Executivo a responder formalmente aos Requerimentos aprovados pela Câmara.\n\nAguardo retorno com o número do protocolo. Obrigado(a)!\nDados consultados em: ${SITE}`;
+      }
+      if(m==='leis'){
+        return `Olá, Vereador(a) ${v.ap}. Sou eleitor(a) de Taubaté e consultei os dados oficiais do seu mandato (2025–2026) no Radar Taubaté: de ${nf(totP)} proposições apresentadas, foram ${nf(v.cat.h)} homenagens contra ${nf(v.cat.l)} projetos de lei e ${nf(v.cat.c)} cobranças de fiscalização.\n\nComo cidadão(ã), gostaria de cobrar maior foco do mandato na criação de leis estruturais e na fiscalização rigorosa da Prefeitura.\n\nDados oficiais: ${SITE}`;
+      }
+      if(m==='emendas'){
+        return `Olá, Vereador(a) ${v.ap}. Sou morador(a) de Taubaté (${b}) e gostaria de saber quais obras, serviços públicos ou entidades do município (especialmente na área da Saúde e em ${b}) foram contemplados pelas suas Emendas Impositivas ao orçamento municipal neste mandato, e como seu gabinete está fiscalizando a efetiva liberação desses recursos pela Prefeitura.\n\nDados consultados em: ${SITE}`;
+      }
+      if(m==='voto'){
+        return `Olá, Vereador(a) ${v.ap}. Sou morador(a) de Taubaté e acompanho as votações nominais da Câmara pelo Radar Taubaté (onde constam ${nf(v.vs)} votos “Sim” e ${nf(v.vn)} votos “Não” registrados no painel eletrônico).\n\nGostaria de saber qual é o posicionamento oficial do seu mandato sobre os projetos em pauta nesta semana e pedir que seu voto priorize o interesse dos moradores de ${b}.\n\nFonte: ${SITE}`;
+      }
+      return `Olá, Vereador(a) ${v.ap}. Sou morador(a) de Taubaté e consultei sua ficha oficial no Radar Taubaté (${pPres}% de presença em plenário, ${nf(v.leis_tot||0)} normas aprovadas e ${nf(totP)} proposições em 2025–2026).\n\nGostaria de solicitar informações sobre as principais ações de fiscalização e projetos de lei do seu gabinete voltados para ${b} neste semestre.\n\nFonte: ${SITE}`;
+    };
+    const updateGcLinks=()=>{
+      const v=V[+gcVer.value]||V[0];
+      const txt=gcMsg.value;
+      const enc=encodeURIComponent(txt);
+      const subj=encodeURIComponent(`Cobrança Cidadã — Mandato ${v.ap} (Taubaté)`);
+      const formUrl=`https://camarasempapel.camarataubate.sp.gov.br/spl/parlamentar-formulario.aspx?id=${v.id}`;
+      $('gc-acts').innerHTML=
+        (v.email?`<a class="btn" href="mailto:${esc(v.email)}?subject=${subj}&body=${enc}">📧 Enviar por E-mail oficial</a>`:'')
+        +`<a class="btn" href="${formUrl}" target="_blank" rel="noopener">🏛️ Fale com o Vereador (Site da Câmara ↗)</a>`
+        +`<a class="btn wa" href="https://wa.me/?text=${enc}" target="_blank" rel="noopener">💬 Enviar no WhatsApp</a>`
+        +`<button class="btn gh" type="button" id="gc-copy">📋 Copiar mensagem</button>`;
+      $('gc-info').innerHTML=[
+        v.email?`E-mail oficial do gabinete: <b>${esc(v.email)}</b>`:'',
+        v.tel?`Telefone na Câmara: <b>${esc(v.tel)}</b>`:'',
+        `Endereço: <b>Av. Bandeirantes, 392 — Parque Maria Helena</b>`
+      ].filter(Boolean).join(' · ');
+      const cpBtn=$('gc-copy');
+      if(cpBtn)cpBtn.onclick=async e=>{
+        try{await navigator.clipboard.writeText(gcMsg.value);e.target.textContent='✅ Mensagem copiada!';}
+        catch(_){gcMsg.focus();gcMsg.select();e.target.textContent='Selecionado: copie (Ctrl+C)';}
+      };
+    };
+    const refreshGc=()=>{gcMsg.value=buildGcMsg();updateGcLinks();};
+    gcVer.addEventListener('change',refreshGc);
+    gcMot.addEventListener('change',refreshGc);
+    if(gcBai)gcBai.addEventListener('input',refreshGc);
+    gcMsg.addEventListener('input',updateGcLinks);
+    refreshGc();
   }
 })();
 
@@ -1277,7 +1499,9 @@ try{
     const qo=e.target.closest('[data-qo]');
     if(qo)track('filtro_vereadores',{ordem:qo.dataset.qo});
     const mBtn=e.target.closest('.mbtn');
-    if(mBtn)track('modo_leitura',{modo:mBtn.id==='m-simples'?'manchetes':'completo'});
+    if(mBtn)track('modo_leitura',{modo:mBtn.id==='m-simples'?'manchetes':(mBtn.id==='m-guia'?'guia_cidadao':'completo')});
+    const gcAct=e.target.closest('#gc-acts a, #gc-acts button');
+    if(gcAct&&$('gc-ver')){const v=V[+$('gc-ver').value];if(v)track('cobranca_vereador',{vereador:v.ap,motivo:$('gc-motivo').value,canal:gcAct.textContent.trim()});}
   });
   ['ca','cb'].forEach(id=>{
     const el=$(id);
